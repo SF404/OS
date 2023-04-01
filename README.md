@@ -44,7 +44,7 @@
         - __path__ -> The path of executable file. This can be absolute or relative.
         - __argv__ -> Array of argumants to be passed to executable file. The last element must be null.
     - If the return value of exec is __-1__ it means that __exec__ failed and control return to caller.
-- ## __Open__
+- ## __Input Output System Calls__
     - ### __Terminology__
         - __File Descriptor__ -> An integer that uniquely identifies an open file.
         - __File Descriptor Table__ -> Collection of indices of file descriptor.
@@ -55,7 +55,7 @@
             - __0__ -> Read from **stdin**  (Keyboard)
             - __1__ -> Write to **stdout**  (Display)
             - __2__ -> Write to **stderr** (Error)
-    - __Input/Output calls__
+    - ### __Input/Output calls__
         - __Create__
 
             ```c
@@ -77,8 +77,27 @@
             size_t read (int fd, buff, sizeOfBuff);
             ```
         - __Write__
-        
+
             ```c
             size_t write (int fd, buff, sizeOfBuff);
             ```
+- ## __Wait__
+    When a process calls the "wait" system call, the operating system blocks the parent process until one of the child process terminates, and then returns information about the child process.
 
+    ```c
+    int wait(int *status);
+    int wait(NULL);
+    ```
+
+    - The "status" variable will be used to store the exit status of the child process that has terminated.
+    - The exit status is stored in the "status" variable using a bit field structure. The lower 8 bits of the "status" variable store the exit code of the child process, while the upper 8 bits store additional information such as whether the child process terminated due to a signal, and if so, which signal it was.
+    - The "wait" system call returns the process ID of the terminated child process to the parent process.
+
+- ## __Waitpid__
+    Similar to "wait", the only difference is that "wait" waits for any child process to terminate and collect its exit status, while "waitpid" waits for a specific child process to terminate and collect its exit status. The specific child's pid is passed to the "waitpid" as argument.
+
+    ```c
+    pid_t waitpid (pid_t pid, int *status, int options);
+    ```
+
+    __Options__ to specify additional behaviour.
