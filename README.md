@@ -1,11 +1,7 @@
 # Operating System 
 ## Important Terms
 1. __Process ->__ Program under execution is called "process".
-Only single process can run at a time in one CPU (core)
-2. __Process State ->__ 
-    1.  
-  
-
+Only single process can run at a time in one CPU (core).  
 
 > # Header Files
 - ## __unistd.h__ (Unix-Standard)
@@ -15,7 +11,7 @@ Only single process can run at a time in one CPU (core)
     #include<unistd.h>
     ```
 - ## __fcntl.h__ (File-Control)
-    This Header file is used to perform various file control operations on a file descriptor, such as changing the file access mode, open, close or setting file ststus flags.
+    This Header file is used to perform various file control operations on a file descriptor, such as changing the file access mode, open, close or setting file status flags.
 
     ```c
     #include<fcntl.h>
@@ -25,7 +21,7 @@ Only single process can run at a time in one CPU (core)
     - The fork() system call is used to creates duplicate copy of the parent process (called child process).
     - After the new child Process is created both the process (parent, child) will execute the next instruction.
     - Child process uses same pc(program counter) register, CPU registers, open file descriptors.
-    - fork() dosent take any argument and returns an integer value.
+    - fork() doesn't take any argument and returns an integer value.
 
          ```c
         int p = fork(); 
@@ -42,7 +38,75 @@ Only single process can run at a time in one CPU (core)
         - __p>0__
 
              In parent process value of p is the PID(process ID) of the child process.
+
 - ## __Exec__
+
+    - When program invokes exec system call, the operating system replaces the current process's code and data with the code and data of the new process specified by the user.
+    - Exec system call replaces the current process image with a new process image.
+
+        ```c
+        int exec (const char *path, const *char argv[]);
+        ```
+        - __path__ -> The path of executable file. This can be absolute or relative.
+        - __argv__ -> Array of argumants to be passed to executable file. The last element must be null.
+    - If the return value of exec is __-1__ it means that __exec__ failed and control return to caller.
+- ## __Input Output System Calls__
+    - ### __Terminology__
+        - __File Descriptor__ -> An integer that uniquely identifies an open file.
+        - __File Descriptor Table__ -> Collection of indices of file descriptor.
+        __Each process has its file descriptor table__.
+        - __Standard File Descriptor__ -> By default first three entries of **FDT** are automaticaly filled.
+
+            __Entries (FD)__
+            - __0__ -> Read from **stdin**  (Keyboard)
+            - __1__ -> Write to **stdout**  (Display)
+            - __2__ -> Write to **stderr** (Error)
+    - ### __Input/Output calls__
+        - __Create__
+
+            ```c
+            int create ("file name", mode);
+            ```
+        - __Open__
+
+            ```c
+            int open ("path", modes);
+            ```
+        - __Close__
+
+            ```c
+            int close (int fd);
+            ```
+        - __Read__
+
+            ```c
+            size_t read (int fd, buff, sizeOfBuff);
+            ```
+        - __Write__
+
+            ```c
+            size_t write (int fd, buff, sizeOfBuff);
+            ```
+- ## __Wait__
+    When a process calls the "wait" system call, the operating system blocks the parent process until one of the child process terminates, and then returns information about the child process.
+
+    ```c
+    int wait(int *status);
+    int wait(NULL);
+    ```
+
+    - The "status" variable will be used to store the exit status of the child process that has terminated.
+    - The exit status is stored in the "status" variable using a bit field structure. The lower 8 bits of the "status" variable store the exit code of the child process, while the upper 8 bits store additional information such as whether the child process terminated due to a signal, and if so, which signal it was.
+    - The "wait" system call returns the process ID of the terminated child process to the parent process.
+
+- ## __Waitpid__
+    Similar to "wait", the only difference is that "wait" waits for any child process to terminate and collect its exit status, while "waitpid" waits for a specific child process to terminate and collect its exit status. The specific child's pid is passed to the "waitpid" as argument.
+
+    ```c
+    pid_t waitpid (pid_t pid, int *status, int options);
+    ```
+
+    __Options__ to specify additional behaviour.
 
 
 - ## __Pipe__
@@ -62,8 +126,4 @@ Only single process can run at a time in one CPU (core)
         fd[0]; // file descriptor for using read end (recieve data)
         fd[1]; // file descriptor for using write end (send data)
         ````
-    - if pipe return -1 when fails.
-    
-
-
-
+    - if pipe return -1 when fails. 
