@@ -17,12 +17,10 @@ int main()
     else if (f1 == 0)
     {
         printf("Passing message from child1 to stdout\n");
-        dup2(fd[1], 1);
+        write(fd[1], "This is the message\n", 21);
     }
     else
     {
-        wait(NULL);
-        printf("%s", buffer);
         int f2 = fork();
         if (f2 < 0)
         {
@@ -31,9 +29,10 @@ int main()
         }
         else if (f2 == 0)
         {
-            dup2(fd[0], 0);
-            scanf("%s", buffer);
-            printf("The message from the first child is \"%s\"\n", buffer);
+            read(fd[0], buffer, 21);
+            printf("The message from the first child is: ");
+            // write(1, buffer, 21);
+            printf("%s\n", buffer);
         }
         else{
             wait(NULL);
