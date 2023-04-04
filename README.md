@@ -109,8 +109,8 @@ Only single process can run at a time in one CPU (core).
     __Options__ to specify additional behaviour.
 
 
-- ## __Pipe__
-    - used to move data between the commands.
+- ## __Pipe__ (Inter-Process Communication)
+    - used to move data between the two processes.
 
         ```
         Command1 --> Command2
@@ -126,4 +126,25 @@ Only single process can run at a time in one CPU (core).
         fd[0]; // file descriptor for using read end (recieve data)
         fd[1]; // file descriptor for using write end (send data)
         ````
-    - if pipe return -1 when fails. 
+    - pipe return -1 when fails. 
+- ## __Inter-Process Communication using Shared Memory__
+    - System calls used:
+
+        ```c
+        int shmget(key_t key, size_t size, int shmflg); // It is used to create the shared memory senment
+        void *shmat(int shmid, void *shmaddr, int shmflag); // It is used to attach the shared segment to with the process
+        ```
+    - In this method of communication we write two programs:
+    
+      - program 1: __Sender__
+        
+        - Create the shared segment
+        - Attach to it
+        - Write some content into it.
+
+      - Program 2: __Receiver__
+
+        - Attach itself to the shared segment
+        - Read the data written by Program 1.
+
+        
