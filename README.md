@@ -21,7 +21,7 @@ Registers are faster to access memory. <br/>
 
 4. __PC Architecture ->__ 
 
-    ![Alt text](Images/Untitled.jpg)
+    ![Alt text](images/cpu.svg)
 
     - __Registers:__ High speed memory storing unit.
 
