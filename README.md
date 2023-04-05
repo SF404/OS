@@ -18,8 +18,10 @@ Registers are faster to access memory. <br/>
 <br/>
 
 4. __PC Architecture ->__ 
-    <img align='right' width=200 src='Images/CPU.png'/>
-    <br/>
+
+    <p align="center">
+    <img width="200" src="Images/CPU.png"/>
+
     - __Registers:__ High speed memory storing unit.
 
     - __ALU:__ (Arthematic Logic Unit) Performs all arthematic and logic operations.
@@ -27,11 +29,10 @@ Registers are faster to access memory. <br/>
     - __MMU:__ (Memory Management Unit) Converts virtual addresses into physical addresses.
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
-   
-<br/>
-<br/>
-<br/>
+    </p>
 
+
+<br/>
 
 > # Header Files
 - ## __unistd.h__ (Unix-Standard)
