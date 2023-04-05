@@ -21,6 +21,7 @@ Registers are faster to access memory. <br/>
 
     <p align="center">
     <img width="200" src="Images/CPU.png"/>
+    </p>
 
     - __Registers:__ High speed memory storing unit.
 
@@ -29,7 +30,6 @@ Registers are faster to access memory. <br/>
     - __MMU:__ (Memory Management Unit) Converts virtual addresses into physical addresses.
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
-    </p>
 
 
 <br/>
