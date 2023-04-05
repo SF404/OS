@@ -3,6 +3,19 @@
 1. __Process ->__ Program under execution is called "process".
 Only single process can run at a time in one CPU (core).  
 
+2. __Threads ->__ Lightweight process which runs within a programs's process and shares the same memory space.
+
+3. __Registers ->__ Very small amount of storage located within the CPU. <br/>
+Used to store data that is frequently accessed or manipulated by the CPU. <br/>
+Registers are faster to access memory. <br/>
+
+    Some important registers are: 
+    - __Program Counter (PC)__: Keep track of the next instruction to be executed.
+    - __Stack pointer (SP)__: Holds memory address of the top of the stack.
+    - __Base Pointer (BP)__: 
+    - __Status Register (FLAGS)__: Store the outcome of the most recent arthematic or logical operation. e.g carry, zero, overflow flags(Allocated memory overflow if value is **1**)  
+
+
 > # Header Files
 - ## __unistd.h__ (Unix-Standard)
      This Header file provides access to the __POSIX__ Operating System API.
@@ -147,4 +160,25 @@ Only single process can run at a time in one CPU (core).
         - Attach itself to the shared segment
         - Read the data written by Program 1.
 
+- ## __Signal__
+    - Signal is software intrupt delivered to process or thread by the Operating System.
+    - It intrupts the normal flow of execution and transfers control to a signal handler. 
+
+        ```c
+        signal(int sigNum, void handler);
+        // e.g
+        signal(SIGINT, handler);
+
+        ```
+        Here are some commonly used signal numbers
+
+        __SIGINT__ (2) -> Ctrl+C
+        
+        __SIGTSTP__ (20) -> Ctrl+Z
+
+        __SIGTERM__ (15) -> Termination signal
+
+        __SIGKILL__ (9) -> Forced termination signal
+
+        __SIGSEGV__ (11) -> Segmentation fault signal 
         
