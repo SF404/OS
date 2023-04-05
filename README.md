@@ -13,7 +13,19 @@ Registers are faster to access memory. <br/>
     - __Program Counter (PC)__: Keep track of the next instruction to be executed.
     - __Stack pointer (SP)__: Holds memory address of the top of the stack.
     - __Base Pointer (BP)__: 
-    - __Status Register (FLAGS)__: Store the outcome of the most recent arthematic or logical operation. e.g carry, zero, overflow flags(Allocated memory overflow if value is **1**)  
+    - __Status Register (FLAGS)__: Store the outcome of the most recent arthematic or logical operation. e.g carry, zero, overflow flags(Allocated memory overflow if value is **1**) . 
+    
+<br/>
+
+4. __PC Architecture ->__ 
+<img align='right' width=200 src='Images/CPU.png'/> 
+
+    - __Registers:__ High speed memory storing unit.
+    - __ALU:__ (Arthematic Logic Unit) Performs all arthematic and logic operations.
+    - __MMU:__ (Memory Management Unit) Converts virtual addresses into physical addresses.
+    - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
+   
+<br/>
 
 
 > # Header Files
