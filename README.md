@@ -33,6 +33,7 @@ Registers are faster to access memory. <br/>
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
 
+<hr/>
 
 <br/>
 
@@ -49,6 +50,10 @@ Registers are faster to access memory. <br/>
     ```c
     #include<fcntl.h>
     ```
+
+<hr/>
+<br/>
+
 > # System Calls
 - ## __Fork__
     - The fork() system call is used to creates duplicate copy of the parent process (called child process).
