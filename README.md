@@ -33,6 +33,7 @@ Registers are faster to access memory. <br/>
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
 
+<hr/>
 
 
 <br/>
@@ -50,6 +51,10 @@ Registers are faster to access memory. <br/>
     ```c
     #include<fcntl.h>
     ```
+
+<hr/>
+<br/>
+
 > # System Calls
 - ## __Fork__
     - The fork() system call is used to creates duplicate copy of the parent process (called child process).
@@ -202,4 +207,55 @@ Registers are faster to access memory. <br/>
         __SIGKILL__ (9) -> Forced termination signal
 
         __SIGSEGV__ (11) -> Segmentation fault signal 
-        
+
+<hr/>
+
+# __Installing XV6 Operating System using QEMU(Emulator) On Ubuntu__
+
+XV6 is Operating System developed by MIT. Used as a teaching tool to learn about Operating System.
+## __Steps involved in Installation:__
+- ### __Update Ubuntu Operating System__
+    
+    ```properties
+    sudo apt-get update
+    ```
+
+    ![1](https://user-images.githubusercontent.com/109202383/230532369-e9808233-87db-4fc0-b092-fecab9814506.png)
+- ### __Install QEMU__ (Virtualization tool which allows to run one or more virtual machines)
+
+    ```properties
+    sudo apt-get install qemu
+    ```
+    
+    ![2](https://user-images.githubusercontent.com/109202383/230532366-f70dac83-ed83-4c2d-9bef-965e77333101.png)
+    ```properties
+    sudo apt-get install qemu-kvm 
+    # QEMU KVM allows to access physical resources on Virtual Machine.
+    ```
+
+    ![4](https://user-images.githubusercontent.com/109202383/230532360-97382282-a3cf-44ba-89a0-f1ad79b873a6.png)
+
+- ### __Clone XV6 from Github__
+
+    ![3](https://user-images.githubusercontent.com/109202383/230532362-a5352b71-b44d-4330-9720-06a5322fc139.png)
+
+    ```properties
+    git clone https://github.com/mit-pdos/xv6-public.git
+    ```
+
+    ![5](https://user-images.githubusercontent.com/109202383/230532356-ef8e8c6f-9796-4966-b469-021d369a5b24.png)
+    
+- ### __Run XV6__
+  
+    ```properties
+    cd xv6-public
+    ```
+    
+    ```properties
+    make qemu
+    # or you can run qemu in same window(terminal) as
+    make qemu-nox
+    ```
+    ![6](https://user-images.githubusercontent.com/109202383/230532345-6828124f-b212-4f89-9979-8b823d760c3f.png)
+
+<hr/>
