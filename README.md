@@ -33,9 +33,43 @@ Registers are faster to access memory. <br/>
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
 
+5. __Physical Address Space__ (Actual memory locations available in computer's **RAM**)
+
+    <p>
+    <img width="300" src="https://user-images.githubusercontent.com/109202383/230199389-e5efaff9-1cab-46ee-9721-856bbe6bd0de.png"/>
+    </p>
+
+    - **Max Size of RAM** depends on architecture of the **CPU**.
+
+        **32-bit** Architecture => 2<sup>32</sup> => **4GB RAM**
+
+        **64-bit** Architecture => 2<sup>64</sup> => **16EB RAM**
+
+    - **Memory Units**
+
+        ||||
+        |-|-|-|
+        |1 Bit      |0, 1| |
+        |8 Bits     | 1 Byte||
+        |1024 Bytes | 1 KB |2<sup>10</sup> Bytes|
+        |1024 KB    | 1 MB |2<sup>20</sup> Bytes|
+        |1024 MB    | 1 GB |2<sup>30</sup> Bytes|
+        |1024 GB    | 1 TB |2<sup>40</sup> Bytes|
+        |1024 TB    | 1 PB |2<sup>50</sup> Bytes|
+        |1024 PB    | 1 EB |2<sup>60</sup> Bytes|
+        |1024 EB    | 1 ZB |2<sup>70</sup> Bytes|
+        
+    - **Memory Maped I/O :** 
+        - Peripheral devices are assigned a range memory addresses, that corrosponds to the device register's and control structure. 
+        - The CPU can read and write to the device's register by reading and writing to a corrosponding register.
+
+    - **VGA Memory**
+        - Memory used by **GPU** to store images and data for display on monitor.
+
+    - **Low Addresses** 
+        - Memory reserved for **OS, BIOS, low-level components**.
+
 <hr/>
-
-
 <br/>
 
 > # Header Files
