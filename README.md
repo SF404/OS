@@ -69,6 +69,25 @@ Registers are faster to access memory. <br/>
     - **Low Addresses** 
         - Memory reserved for **OS, BIOS, low-level components**.
 
+    <br/>
+
+6. __Memory Virtualization ->__
+
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/109202383/230736616-d76b14f9-4b01-4ae3-9df6-f73764ec7458.png" width="500" />
+    </p>
+
+    <br/>
+
+    - **Virtualization:** Creation of virtual resource from physical resource. It allows multiple programs to share single physical resource.
+    - When program compiles it assumes that it has entire memory(0 to some specific address (say 16kb)). These memory addresses are called **Virtual Addresses**.
+    - So, at compilation virtual addresses are assigned by the compiler.
+    - When program runs virtual addresses are converted to physical addresses.
+    - This conversion is done by **MMU** (Memory Management Unit), hardware present in CPU.
+    - Physical Address (PA) $=$ Base Address (BA) $+$ Virtual Address (VA)
+        
+        Assert (BA $+$ VA $<$ BA $+$ Limit) ---> Illegal memory exception(OS will kill this process immediately)
+
 <hr/>
 <br/>
 
