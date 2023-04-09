@@ -1,11 +1,29 @@
 # Operating System 
-## Important Terms
-1. __Process ->__ Program under execution is called "process".
+## Important Concepts
+1. __OS? ->__ OS is a software which manages system resources such as CPU, Storage, I/O devices.
+
+    OS acts as a library which provide (Interface) some set of **system calls**, **services** to manage hardware and software resources.
+
+    These **system calls** are called **API's**
+    - For Windows - **win32 API's**
+    - For Linux - **POSIX API's**
+
+    __Why OS?__ 
+    
+    To make source code portable
+
+2. __System Calls ->__ The only way for the user level program to interact with te kernal to perform previlaged operation like accessing files, devices, memory.
+2. __OS Goals ->__ 
+    - Resource management
+    - Security
+    - Maximum CPU utilization
+    - Efficiency
+3. __Process ->__ Program under execution is called "process".
 Only single process can run at a time in one CPU (core).  
 
-2. __Threads ->__ Lightweight process which runs within a programs's process and shares the same memory space.
+4. __Threads ->__ Lightweight process which runs within a programs's process and shares the same memory space.
 
-3. __Registers ->__ Very small amount of storage located within the CPU. <br/>
+5. __Registers ->__ Very small amount of storage located within the CPU. <br/>
 Used to store data that is frequently accessed or manipulated by the CPU. <br/>
 Registers are faster to access memory. <br/>
 
@@ -15,11 +33,9 @@ Registers are faster to access memory. <br/>
     - __Base Pointer (BP)__: 
     - __Status Register (FLAGS)__: Store the outcome of the most recent arthematic or logical operation. e.g carry, zero, overflow flags(Allocated memory overflow if value is **1**) . 
     
-<br/>
+    <br/>
 
-
-
-4. __PC Architecture ->__ 
+6. __PC Architecture(x86) ->__ 
 
     <p align="center">
     <img src="https://user-images.githubusercontent.com/109202383/230194449-9d1b108b-b2da-4c16-b5a1-3cc76618f0a9.png" width="200"/>
@@ -33,7 +49,7 @@ Registers are faster to access memory. <br/>
 
     - __Cache:__ Smaller, faster memory. It stores copies of data from frequently used memory locations.
 
-5. __Physical Address Space__ (Actual memory locations available in computer's **RAM**)
+7. __Physical Address Space__ (Actual memory locations available in computer's **RAM**)
 
     <p>
     <img width="300" src="https://user-images.githubusercontent.com/109202383/230199389-e5efaff9-1cab-46ee-9721-856bbe6bd0de.png"/>
@@ -71,7 +87,7 @@ Registers are faster to access memory. <br/>
 
     <br/>
 
-6. __Memory Virtualization ->__
+8. __Memory Virtualization ->__
 
     <p align="center">
     <img src="https://user-images.githubusercontent.com/109202383/230736616-d76b14f9-4b01-4ae3-9df6-f73764ec7458.png" width="500" />
@@ -87,6 +103,10 @@ Registers are faster to access memory. <br/>
     - Physical Address (PA) $=$ Base Address (BA) $+$ Virtual Address (VA)
         
         Assert (BA $+$ VA $<$ BA $+$ Limit) ---> Illegal memory exception(OS will kill this process immediately)
+
+9. __Concurrency ->__ Ability to access or execute multiple task or process simultaneously.
+
+10. __Persistance__ Ability of program or data to remain on a storge device even after the device has been turnd off or terminated.
 
 <hr/>
 <br/>
