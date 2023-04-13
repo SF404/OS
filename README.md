@@ -332,3 +332,95 @@ XV6 is Operating System developed by MIT. Used as a teaching tool to learn about
     ![6](https://user-images.githubusercontent.com/109202383/230532345-6828124f-b212-4f89-9979-8b823d760c3f.png)
 
 <hr/>
+
+# __Adding system call in XV6__
+- __Assign syscall number in `syscall.h` file.__
+
+    ```h
+    #define SYS_getticks 22
+    ```
+- __Add pointer to system call in `syscall.c` file.__
+
+    ```properties
+    [SYS_getticks] sys_getticks,
+    ```
+    The above instruction means when system call number 22 occur, function pointed by sys_getticks is called.
+
+- __Add function prototype in `syscall.c` file.__
+
+    ```c
+    extern int sys_getticks(void);
+    ```
+    `extern` keyword is used to tell the compiler that `sys_getticks` is defined in some other file. _So that linker can find function definition at link time._
+- __Now define the system call function(handler) in `sysproc.c` file.__
+
+    ```c
+    int 
+    sys_getticks(void) {
+        return ticks;
+    } 
+    ```
+
+- __In the next two steps add system call to user interface, so that user program can access the system call.__
+
+    - In file `usys.S` add below line at the end.
+
+        ```properties
+        SYSCALL(getticks);
+        ```
+
+    - In file `user.h` add the following line.
+
+        ```c
+        int getticks(void);
+        ```
+
+_`Till this step we have successfully added a system call which returns ticks`(clock cycle of CPU)_
+
+- __Now add a user program to XV6__ (A simple C program in xv6 directory e.g: `myprogram.c`).
+
+    ```c
+    include "types.h"
+    include "stat.h"
+    include "user.h"
+    // include order of the above header file sholud be same as shown, otherwise it may create error.
+    
+    int main(int argc, char *argv[])
+    {
+      printf(1, "Ticks: %d\n", getticks());
+      exit();
+    }
+    ```
+
+- __Edit `Makefile`__ to make our program available for compilation.
+
+    ```properties
+    ...
+    ...
+    ...
+
+    _usertests\
+    _wc\
+    _zombie\
+    _myprogram\
+    EXTRA=\
+
+    ...
+    ...
+    ```
+    Run below commands
+
+    ```properties
+    make clean
+    ```
+    ```properties
+    make
+    ```
+
+- __Now start XV6 on QEMU__
+
+    ```properties
+    make qemu-nox
+    ```
+    Run `ls` to check whether `myprogram` is available. 
+    
