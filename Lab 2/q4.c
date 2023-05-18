@@ -4,7 +4,7 @@
 #include<signal.h>
 void handler(int sig)
 {
-    printf("Caught signal %d\n", sig);
+    printf(" Caught signal %d\n", sig);
 }
   
 int main()
