@@ -1,0 +1,3 @@
+total 40
+-rw-rw-r-- 1 sf404 sf404     0 May 19 16:31 output.txt
+-rwxrwxr-x 1 sf404 sf404 16336 May 1

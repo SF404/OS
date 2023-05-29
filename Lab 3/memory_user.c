@@ -4,10 +4,6 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        printf("Usage: %s <memory_size_in_mb>\n", argv[0]);
-        return 1;
-    }
 
     int memorySizeMB = atoi(argv[1]);
     int arraySize = memorySizeMB * 1024 * 1024 / sizeof(int);
